@@ -4,7 +4,6 @@
   "description": "my first socket.io app",
   "main": "index.js",
   "scripts":{
-    "build": "netlify deploy --prod",
     "start": "node index.js"
   },
   "type": "commonjs",
