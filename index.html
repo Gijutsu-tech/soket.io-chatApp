@@ -289,7 +289,7 @@
       socket.emit("new-user-joined", name);
 
       socket.on("user-joined", (name) => {
-        append(`'${name}' Joined the chat at ${hr}:${min}`);
+        append(`'${name}' Joined the chat`);
       });
 
       form.addEventListener("submit", (e) => {

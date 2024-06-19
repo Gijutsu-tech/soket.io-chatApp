@@ -31,11 +31,11 @@ io.on('connection', (socket)=>{
         socket.broadcast.emit('chat message', {message: message, name: users[socket.id]});
     });
 
-    socket.on('disconnect', (name)=>{
+    socket.on('disconnect', ()=>{
         console.log("user disconnected")
     })
 })
 
-server.listen(3000, () => {
-    console.log('server running at http://localhost:3000');
+server.listen(8000, () => {
+    console.log('server running at http://localhost:8000');
   });
