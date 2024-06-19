@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg");
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* color: #000000; */
+}
+
+.nav{
+    background: #242424;
+    color: white;
+    padding: 10px;
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100vw; */
+}
+
+.yellow{
+    color: yellow;
+}
+
+.chatBox{
+    height: 75vh;
+    width: 75vw;
+    background: #818181 0.8;
+    backdrop-filter: blur(5px);
+    box-shadow: 10px -15px 25px -10px #111;
+    z-index: -1;
+    margin: 20px auto;
+    /* padding: 30px 40px; */
+    border-radius: 20px 20px 0px 0px;
+    overflow-y: auto;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    font-size: 1.25em;
+    background: rgba(121, 121, 121, 0.4);
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
+    margin: 15px 35px;
+    padding: 8px 10px;
+    width: fit-content;
+    cursor: default;
+    transition: all .2s;
+}
+
+.message:hover{
+    background: rgba(121, 121, 121, 0.5);
+}
+
+.left{
+    position: relative;
+    align-self: flex-start;
+}
+
+.right{
+    position: relative;
+    align-self: flex-end;
+}
+
+.send{
+    /* position: relative;
+    top: 69.4%; */
+    width: 75vw;
+    z-index: 100;
+    margin: auto;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#send-box{
+    background: #a8a8a8;
+    padding: 7px 5px;
+}
+
+#msginp{
+    border: none;
+    padding: 10px 12px;
+    /* width: 90%; */
+    width: 67vw;
+    border-radius: 55px;
+}
+
+.btn{
+    border: none;
+    background: #535353;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 2px;
+    border-radius: 55px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.btn:hover{
+    background: #292929;
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Me! - Chat App</title>
+    <link
+      rel="shortcut icon"
+      href="./chat-me/media/favicon.png"
+      type="image/x-icon"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .center {
+        justify-self: center;
+      }
+
+      .container {
+        height: 100vh;
+        width: 100vw;
+        background-image: url("https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg");
+        background-size: cover;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* color: #000000; */
+      }
+
+      .nav {
+        background: #242424;
+        color: white;
+        padding: 10px;
+        font-size: 1.25em;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        /* position: absolute; */
+        /* top: 0; */
+        /* left: 0; */
+        /* width: 100vw; */
+      }
+
+      .yellow {
+        color: yellow;
+      }
+
+      .chatBox {
+        height: 75vh;
+        width: 85vw;
+        background: #818181 0.8;
+        backdrop-filter: blur(5px);
+        box-shadow: 10px -15px 25px -10px #111;
+        margin: 20px auto;
+        /* padding: 30px 40px; */
+        border-radius: 20px 20px 0px 0px;
+        overflow-y: auto;
+        margin-bottom: 0px;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* justify-content: center; */
+      }
+
+      .message {
+        font-size: 1em;
+        background: rgba(121, 121, 121, 0.3);
+        /* backdrop-filter: blur(2px); */
+        border-radius: 5px;
+        margin: 2vh 3vw;
+        padding: 1vh 10px;
+        width: fit-content;
+        cursor: default;
+        transition: all 0.2s;
+        overflow: auto;
+        /* position: absolute; */
+      }
+
+      .left {
+        float: left;
+        clear: both;
+        /* position: absolute; */
+        /* align-self: flex-start; */
+      }
+
+      .right {
+        float: right;
+        clear: both;
+        /* position: absolute; */
+        /* right: 5vw; */
+        /* transform: translateX(85vw); */
+        /* align-self: flex-end; */
+        background: rgba(121, 121, 121, 0.6);
+      }
+
+      .send {
+        /* position: relative;
+    top: 69.4%; */
+        width: 85vw;
+        z-index: 100;
+        margin: auto;
+        border-radius: 0px 0px 20px 20px;
+      }
+
+      #send-box {
+        background: #a8a8a8;
+        padding: 7px 5px;
+      }
+
+      #msginp {
+        border: none;
+        padding: 10px 12px;
+        /* width: 90%; */
+        width: 90%;
+        border-radius: 55px;
+      }
+
+      .btn {
+        border: none;
+        background: #535353;
+        color: white;
+        padding: 10px 20px;
+        margin-left: 2px;
+        border-radius: 55px;
+        cursor: pointer;
+        transition: all 0.1s;
+      }
+
+      .btn:hover {
+        background: #292929;
+      }
+
+      .parent {
+        width: 85vw;
+      }
+
+      @media screen and (max-width: 1205px) {
+        #msginp{
+          width: 89%;
+        }
+      }
+
+      @media screen and (max-width: 1097px) {
+        #msginp{
+          width: 88%;
+        }
+      }
+
+      @media screen and (max-width: 1006px) {
+        #msginp{
+          width: 87%;
+        }
+      }
+
+      @media screen and (max-width: 930px) {
+        #msginp{
+          width: 86%;
+        }
+      }
+
+      @media screen and (max-width: 864px) {
+        #msginp{
+          width: 85%;
+        }
+      }
+
+      @media screen and (max-width: 807px) {
+        #msginp{
+          width: 80%;
+        }
+      }
+      
+            @media screen and (max-width: 657px) {
+              #msginp{
+                width: 78.5%;
+              }
+            }
+
+      @media screen and (max-width: 557px) {
+        #msginp{
+          width: 78%;
+        }
+      }
+
+      @media screen and (max-width: 549px) {
+        #msginp{
+          width: 77%;
+        }
+      }
+
+      @media screen and (max-width: 530px) {
+        #msginp{
+          width: 73%;
+        }
+      }
+
+      @media screen and (max-width: 454px) {
+        #msginp{
+          width: 70%;
+        }
+      }
+
+      @media screen and (max-width: 409px) {
+        #msginp{
+          width: 65%;
+        }
+      }
+
+      @media screen and (max-width: 353px) {
+        #msginp{
+          width: 57%;
+        }
+      }
+
+      @media screen and (max-width: 289px) {
+        #msginp{
+          width: 51%;
+        }
+      }
+    </style>
+    <!-- <script src="http://localhost:8000/socket.io/socket.io.js"></script> -->
+    <!-- <script src="./client.js"></script> -->
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div id="nav-item">Chat<span class="yellow">ME</span></div>
+      </div>
+
+      <div class="chatBox" id="chatBox">
+        <div class="parent">
+          <div class="message" id="chat-start"></div>
+        </div>
+      </div>
+
+      <div class="send">
+        <form action="" id="send-box">
+          <input
+            type="text"
+            name="msginp"
+            id="msginp"
+            placeholder="Send a Message"
+          />
+          <button class="btn" id="submit" autocomplete="off">Send</button>
+        </form>
+      </div>
+
+      <audio id="send" autoplay>
+        <source src="./chat-me/media/happy-pop-2-185287.mp3" />
+      </audio>
+      <audio id="recieve">
+        <source src="./chat-me/media/achive-sound-132273.mp3" />
+      </audio>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const d = new Date();
+
+      const hr = d.getHours();
+      const min = d.getMinutes();
+
+      const chatStart = document.getElementById("chat-start");
+
+      let sendAudio = new Audio("./chat-me/media/send");
+      // let getAudio = document.getElementById("recieve")
+
+      chatStart.innerHTML = `You joined the chat at ${hr}:${min}`;
+
+      const form = document.getElementById("send-box");
+      const input = document.getElementById("msginp");
+      const messages = document.getElementById("chatBox");
+      const submit = document.getElementById("submit");
+      const name = prompt("Enter Your Name:");
+
+      const append = (message) => {
+        const userJoinElem = document.createElement("div");
+        userJoinElem.classList.add("center");
+        userJoinElem.innerText = message;
+        userJoinElem.classList.add("message");
+        messages.append(userJoinElem);
+      };
+
+      socket.emit("new-user-joined", name);
+
+      socket.on("user-joined", (name) => {
+        append(`'${name}' Joined the chat at ${hr}:${min}`);
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
+
+      submit.addEventListener("click", () => {
+        if (input.value) {
+          let parent = document.createElement("div");
+          parent.classList.add("parent");
+          var userMessage = input.value;
+          var userSide = document.createElement("div");
+          userSide.classList.add("message", "right");
+          userSide.textContent = `You: ${userMessage}`;
+          messages.appendChild(parent);
+          parent.appendChild(userSide);
+          sendAudio.play();
+        }
+      });
+
+      socket.on("chat message", (data) => {
+        // const item = document.createElement("div");
+        // item.textContent = message;
+        let parent = document.createElement("div");
+        parent.classList.add("parent");
+        let item = append(`${data.name} : ${data.message}`);
+        item.classList.remove("center");
+        item.classList.add("message");
+        messages.appendChild(parent);
+        parent.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+  </body>
+</html>
