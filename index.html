@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Me! - Chat App</title>
-    <link
-      rel="shortcut icon"
-      href="./chat-me/media/favicon.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="./chat-me/media/favicon.png" type="image/x-icon"/>
     <style>
       * {
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        overflow-x: hidden;
       }
 
       .center {
@@ -26,49 +22,30 @@
         background-image: url("https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg");
         background-size: cover;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        /* display: flex; */
-        /* justify-content: center; */
-        /* color: #000000; */
       }
 
       .nav {
-        background: #242424;
-        color: white;
+        background: #f5f5f5;
+        color: black;
         padding: 10px;
         font-size: 1.25em;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 1.5px;
-        /* position: absolute; */
-        /* top: 0; */
-        /* left: 0; */
-        /* width: 100vw; */
       }
 
       .yellow {
-        color: yellow;
+        color: #5050fb;
       }
 
       .chatBox {
-        height: 75vh;
-        width: 85vw;
-        background: #818181 0.8;
-        backdrop-filter: blur(5px);
-        box-shadow: 10px -15px 25px -10px #111;
-        margin: 20px auto;
-        /* padding: 30px 40px; */
-        border-radius: 20px 20px 0px 0px;
+        height: 82vh;
         overflow-y: auto;
-        margin-bottom: 0px;
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* align-items: center; */
-        /* justify-content: center; */
       }
 
       .message {
         font-size: 1em;
-        background: rgba(121, 121, 121, 0.3);
-        /* backdrop-filter: blur(2px); */
+        background: #5050fb;
+        color: white;
         border-radius: 5px;
         margin: 2vh 3vw;
         padding: 1vh 10px;
@@ -76,151 +53,149 @@
         cursor: default;
         transition: all 0.2s;
         overflow: auto;
-        /* position: absolute; */
       }
 
       .left {
         float: left;
         clear: both;
-        /* position: absolute; */
-        /* align-self: flex-start; */
       }
 
       .right {
         float: right;
         clear: both;
-        /* position: absolute; */
-        /* right: 5vw; */
-        /* transform: translateX(85vw); */
-        /* align-self: flex-end; */
-        background: rgba(121, 121, 121, 0.6);
+        background: rgb(255, 255, 255);
+        color: black;
+        box-shadow: 0.5px 0.5px 3px black;
       }
 
       .send {
-        /* position: relative;
-    top: 69.4%; */
-        width: 85vw;
+        width: 100vw;
+        position: absolute;
         z-index: 100;
         margin: auto;
-        border-radius: 0px 0px 20px 20px;
+        bottom: 0px;
+        height: fit-content;
+        /* border-radius: 0px 0px 20px 20px; */
       }
 
       #send-box {
-        background: #a8a8a8;
+        background: #ececec;
         padding: 7px 5px;
       }
 
       #msginp {
         border: none;
         padding: 10px 12px;
-        /* width: 90%; */
-        width: 90%;
-        border-radius: 55px;
+        width: 91vw;
+        border-radius: 5px;
+        margin-left: 1vw;
+      }
+
+      #msginp:focus{
+        outline: none;
+        box-shadow: 1px 1px 3px black;
       }
 
       .btn {
         border: none;
-        background: #535353;
+        background: #5050fb;
         color: white;
-        padding: 10px 20px;
+        padding: 8px 15px;
         margin-left: 2px;
-        border-radius: 55px;
+        border-radius: 5px;
         cursor: pointer;
-        transition: all 0.1s;
-      }
-
-      .btn:hover {
-        background: #292929;
+        font-size: 16px;
       }
 
       .parent {
-        width: 85vw;
+        width: 100vw;
       }
 
       @media screen and (max-width: 1205px) {
         #msginp{
-          width: 89%;
+          width: 91%;
         }
       }
 
       @media screen and (max-width: 1097px) {
         #msginp{
-          width: 88%;
+          width: 90%;
         }
       }
 
       @media screen and (max-width: 1006px) {
         #msginp{
-          width: 87%;
+          width: 89%;
         }
       }
 
       @media screen and (max-width: 930px) {
         #msginp{
-          width: 86%;
+          width: 88%;
         }
       }
 
       @media screen and (max-width: 864px) {
         #msginp{
-          width: 85%;
+          width: 87%;
         }
       }
 
       @media screen and (max-width: 807px) {
         #msginp{
-          width: 80%;
+          width: 87%;
         }
       }
       
-            @media screen and (max-width: 657px) {
-              #msginp{
-                width: 78.5%;
-              }
-            }
-
-      @media screen and (max-width: 557px) {
+      @media screen and (max-width: 657px) {
         #msginp{
-          width: 78%;
+          width: 86%;
+        }
+      }
+
+      @media screen and (max-width: 597px) {
+        #msginp{
+          width: 84.5%;
         }
       }
 
       @media screen and (max-width: 549px) {
         #msginp{
-          width: 77%;
+          width: 84%;
         }
       }
 
       @media screen and (max-width: 530px) {
         #msginp{
-          width: 73%;
+          width: 82%;
         }
       }
 
       @media screen and (max-width: 454px) {
         #msginp{
-          width: 70%;
+          width: 80%;
         }
       }
 
       @media screen and (max-width: 409px) {
         #msginp{
-          width: 65%;
+          width: 75%;
         }
       }
 
       @media screen and (max-width: 353px) {
         #msginp{
-          width: 57%;
+          width: 72%;
         }
       }
 
       @media screen and (max-width: 289px) {
         #msginp{
-          width: 51%;
+          width: 69%;
         }
       }
     </style>
+    <script src="https://kit.fontawesome.com/f08dc1776d.js" crossorigin="anonymous"></script>
     <!-- <script src="http://localhost:8000/socket.io/socket.io.js"></script> -->
     <!-- <script src="./client.js"></script> -->
   </head>
@@ -239,22 +214,12 @@
 
       <div class="send">
         <form action="" id="send-box">
-          <input
-            type="text"
-            name="msginp"
-            id="msginp"
-            placeholder="Send a Message"
-          />
-          <button class="btn" id="submit" autocomplete="off">Send</button>
+          <input type="text" name="msginp" id="msginp" placeholder="Send a Message" autofocus/>
+          <button class="btn" id="submit" autocomplete="off">
+            <i class="fa-regular fa-paper-plane"></i>
+          </button>
         </form>
       </div>
-
-      <audio id="send" autoplay>
-        <source src="./chat-me/media/happy-pop-2-185287.mp3" />
-      </audio>
-      <audio id="recieve">
-        <source src="./chat-me/media/achive-sound-132273.mp3" />
-      </audio>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -267,16 +232,13 @@
 
       const chatStart = document.getElementById("chat-start");
 
-      let sendAudio = new Audio("./chat-me/media/send");
-      // let getAudio = document.getElementById("recieve")
-
-      chatStart.innerHTML = `You joined the chat at ${hr}:${min}`;
+      const name = prompt("Enter Your Name:");
+      chatStart.innerHTML = `You (${name}) joined the chat at ${hr}:${min}`;
 
       const form = document.getElementById("send-box");
       const input = document.getElementById("msginp");
       const messages = document.getElementById("chatBox");
       const submit = document.getElementById("submit");
-      const name = prompt("Enter Your Name:");
 
       const append = (message) => {
         const userJoinElem = document.createElement("div");
@@ -289,7 +251,10 @@
       socket.emit("new-user-joined", name);
 
       socket.on("user-joined", (name) => {
-        append(`'${name}' Joined the chat`);
+        var d = new Date();
+        var hr = d.getHours();
+        var min = d.getMinutes();
+        append(`'${name}' Joined the chat at ${hr}:${min}`);
       });
 
       form.addEventListener("submit", (e) => {
@@ -310,13 +275,10 @@
           userSide.textContent = `You: ${userMessage}`;
           messages.appendChild(parent);
           parent.appendChild(userSide);
-          sendAudio.play();
         }
       });
 
       socket.on("chat message", (data) => {
-        // const item = document.createElement("div");
-        // item.textContent = message;
         let parent = document.createElement("div");
         parent.classList.add("parent");
         let item = append(`${data.name} : ${data.message}`);
@@ -324,8 +286,12 @@
         item.classList.add("message");
         messages.appendChild(parent);
         parent.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
+        messages.scrollTo(0, document.body.scrollHeight);
       });
+
+      socket.on('left', (name) =>{
+        append(`'${name}' left the chat`)
+      })
     </script>
   </body>
 </html>

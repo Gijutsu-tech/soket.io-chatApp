@@ -15,24 +15,18 @@ app.get('/', (req, res) => {
 })
  
 io.on('connection', (socket)=>{
-    console.log("new user connected")
-
     socket.on('new-user-joined', (name) =>{
         users[socket.id] = name
         socket.broadcast.emit('user-joined', (name))
-        console.log("New user:", name)
     })
-
-    // socket.on('chat message', (msg) => {
-    //     socket.broadcast.emit('chat message', msg);
-    // });
 
     socket.on('chat message', (message) => {
         socket.broadcast.emit('chat message', {message: message, name: users[socket.id]});
     });
 
     socket.on('disconnect', ()=>{
-        console.log("user disconnected")
+        socket.broadcast.emit('left', users[socket.id]);
+        delete users[socket.id]
     })
 })
 
