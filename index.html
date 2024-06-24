@@ -275,6 +275,7 @@
           userSide.textContent = `You: ${userMessage}`;
           messages.appendChild(parent);
           parent.appendChild(userSide);
+          messages.scrollTo(0, messages.scrollHeight);
         }
       });
 
@@ -286,7 +287,7 @@
         item.classList.add("message");
         messages.appendChild(parent);
         parent.appendChild(item);
-        messages.scrollTo(0, document.body.scrollHeight);
+        messages.scrollTo(0, messages.scrollHeight);
       });
 
       socket.on('left', (name) =>{
