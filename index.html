@@ -285,6 +285,7 @@
         let item = append(`${data.name} : ${data.message}`);
         item.classList.remove("center");
         item.classList.add("message");
+        item.classList.add("left")
         messages.appendChild(parent);
         parent.appendChild(item);
         messages.scrollTo(0, messages.scrollHeight);
